@@ -17,7 +17,7 @@ export const App: React.FC = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const apiBase = import.meta.env.VITE_API_BASE_URL || '';
+      const apiBase = (import.meta as any).env?.VITE_API_BASE_URL || '';
       const url = `${apiBase}/api/inspections${forceRefresh ? '?forceRefresh=true' : ''}`;
       const response = await fetch(url);
       if (!response.ok) {
