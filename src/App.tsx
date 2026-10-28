@@ -17,7 +17,8 @@ export const App: React.FC = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const rawBase = (import.meta as any).env?.VITE_API_BASE_URL || '';
+      const defaultBackend = 'https://assignment-01-server.vercel.app';
+      const rawBase = (import.meta as any).env?.VITE_API_BASE_URL || ((import.meta as any).env?.DEV ? '' : defaultBackend);
       const apiBase = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
       const url = `${apiBase}/api/inspections${forceRefresh ? '?forceRefresh=true' : ''}`;
       const response = await fetch(url);
