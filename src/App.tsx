@@ -3,6 +3,7 @@ import { SheetApiResponse, InspectionRecord } from './types/inspection';
 import { Header } from './components/Header';
 import { StatsCards } from './components/StatsCards';
 import { AnalyticsCharts } from './components/AnalyticsCharts';
+import { TimelineAnalytics } from './components/TimelineAnalytics';
 import { DataTable } from './components/DataTable';
 import { RecordModal } from './components/RecordModal';
 import { AlertCircle, RefreshCw, Database, Server } from 'lucide-react';
@@ -85,6 +86,11 @@ export const App: React.FC = () => {
             stats={data.stats}
             totalVisible={data.data.length}
           />
+        )}
+
+        {/* Timeline Analytics: YoY, QoQ, MoM, DoD & Vehicle Averages */}
+        {data?.data && (
+          <TimelineAnalytics records={data.data} />
         )}
 
         {/* Analytics Charts */}
